@@ -14,7 +14,7 @@ import Rockets from "./screens/Rockets";
 const App = () => {
   return (
     <Router>
-      <Navbar bg="light" expand="lg" className="mb-4">
+      <Navbar bg="dark" variant="dark" expand="lg" >
         <LinkContainer to="/">
           <Navbar.Brand>SpaceX</Navbar.Brand>
         </LinkContainer>
@@ -34,19 +34,21 @@ const App = () => {
         </Navbar.Collapse>
       </Navbar>
 
-      <Container>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/rockets">
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/rockets">
+          <Container className="mt-4">
             <Rockets />
-          </Route>
-          <Route path="/launches">
+          </Container>
+        </Route>
+        <Route path="/launches">
+          <Container className="mt-4">
             <Launches />
-          </Route>
-        </Switch>
-      </Container>
+          </Container>
+        </Route>
+      </Switch>
     </Router>
   );
 };
