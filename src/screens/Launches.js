@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import moment from "moment";
 
 const Launches = () => {
   const [state, setState] = useState([]);
@@ -17,7 +18,7 @@ const Launches = () => {
       <h4>{state.flight_number}</h4>
       <p>{state.mission_name}</p>
       <p>{state.launch_year}</p>
-      <p>{state.launch_date_unix}</p>
+      <p>{moment.unix(state.launch_date_unix).format("MM/DD/YYYY")}</p>
     </>
   ));
   return (
