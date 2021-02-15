@@ -1,4 +1,5 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./screens/Home";
 import Launches from "./screens/Launches";
@@ -21,7 +22,8 @@ const App = () => {
             </li>
           </ul>
         </nav>
-
+      </div>
+      <Container>
         <Switch>
           <Route exact path="/">
             <Home />
@@ -33,7 +35,7 @@ const App = () => {
             <Launches />
           </Route>
         </Switch>
-      </div>
+      </Container>
     </Router>
   );
 };
