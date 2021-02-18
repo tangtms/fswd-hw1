@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Row } from "react-bootstrap";
 import RocketCard from "../../components/RocketCard";
-import { Switch, Route, useRouteMatch } from "react-router-dom";
-import Rocket from "./Rocket";
+import { Row } from "react-bootstrap";
 
 const Rockets = () => {
-  let { path } = useRouteMatch();
   const [rockets, setRockets] = useState([]);
 
   useEffect(() => {
@@ -17,16 +14,9 @@ const Rockets = () => {
 
   return (
     <Row>
-      <Switch>
-        <Route exact path={path}>
-          {rockets.map((rocket) => (
-            <RocketCard key={rocket.id} rocket={rocket} />
-          ))}
-        </Route>
-        <Route path={`${path}/:rocketId`}>
-          <Rocket />
-        </Route>
-      </Switch>
+      {rockets.map((rocket) => (
+        <RocketCard key={rocket.id} rocket={rocket} />
+      ))}
     </Row>
   );
 };

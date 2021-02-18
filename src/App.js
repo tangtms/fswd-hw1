@@ -3,8 +3,8 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import Home from "./screens/Home";
-import Launches from "./screens/launch/Launches";
-import Rockets from "./screens/rocket/Rockets";
+import LaunchRoute from "./screens/launch/LaunchRoute";
+import RocketRoute from "./screens/rocket/RocketRoute";
 
 const App = () => {
   return (
@@ -35,12 +35,12 @@ const App = () => {
         </Route>
         <Route path="/rockets">
           <Container className="mt-4">
-            <Rockets />
+            <RocketRoute />
           </Container>
         </Route>
         <Route path="/launches">
           <Container className="mt-4">
-            <Launches />
+            <LaunchRoute />
           </Container>
         </Route>
       </Switch>

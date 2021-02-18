@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import { Switch, Route, useRouteMatch } from "react-router-dom";
-import Launch from "./Launch";
 
 const Launches = () => {
-  let { path } = useRouteMatch();
   const [state, setState] = useState([]);
 
   useEffect(() => {
@@ -27,15 +24,8 @@ const Launches = () => {
   ));
   return (
     <>
-      <Switch>
-        <Route exact path={path}>
-          <h1>Launches</h1>
-          <p>{launchItems}</p>
-        </Route>
-        <Route path={`${path}/:launchId`}>
-          <Launch />
-        </Route>
-      </Switch>
+      <h1>Launches</h1>
+      <p>{launchItems}</p>
     </>
   );
 };
