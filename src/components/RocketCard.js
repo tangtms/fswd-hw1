@@ -1,5 +1,6 @@
 import React, { useMemo, useCallback } from "react";
-import { Badge, Card, Row, Col } from "react-bootstrap";
+import { Badge, Card, Row, Col, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const InfoRow = ({ title, value, unit }) => {
   return (
@@ -76,16 +77,11 @@ const RocketCard = ({ rocket }) => {
                 unit="kg"
               />
             ))}
-
-            <Col md="12" className="font-weight-bold">
-              Links
-            </Col>
-
             <Col md="12">
-              -{" "}
-              <Card.Link href={rocket.wikipedia} target="_blank">
-                Wikipedia | {rocket.rocket_name}
-              </Card.Link>
+              <hr />
+              <Link to={`/rockets/${rocket.id}`}>
+                <Button variant="primary">More Details {">"}</Button>
+              </Link>
             </Col>
           </Row>
         </Card.Body>
