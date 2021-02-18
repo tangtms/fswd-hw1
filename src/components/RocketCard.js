@@ -83,7 +83,7 @@ const RocketCard = ({ rocket }) => {
 
             <Col md="12">
               -{" "}
-              <Card.Link href={rocket.wikipedia}>
+              <Card.Link href={rocket.wikipedia} target="_blank">
                 Wikipedia | {rocket.rocket_name}
               </Card.Link>
             </Col>
