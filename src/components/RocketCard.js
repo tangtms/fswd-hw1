@@ -1,6 +1,7 @@
 import React, { useMemo, useCallback } from "react";
 import { Badge, Card, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const InfoRow = ({ title, value, unit }) => {
   return (
@@ -31,13 +32,15 @@ const RocketCard = ({ rocket, hideButton = false, fullHeight = false }) => {
 
   return (
     <Card className={fullHeight ? "h-100" : ""}>
-      <Card.Img
+      <LazyLoadImage
+        class="card-img-top"
         alt="Card Top"
-        variant="top"
         src={randImg}
         width="500"
         height="400"
+        placeholderSrc={`${process.env.PUBLIC_URL}/loading.png`}
       />
+
       <Card.Body>
         <Row>
           <Col>
