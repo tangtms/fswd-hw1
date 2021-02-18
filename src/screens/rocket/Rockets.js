@@ -20,7 +20,7 @@ const Rockets = () => {
       </Col>
       {rockets &&
         rockets.map((rocket) => (
-          <>
+          <React.Fragment key={rocket.id}>
             <Col
               md="6"
               className="d-flex justify-content-center align-middle"
@@ -29,7 +29,7 @@ const Rockets = () => {
               }}
             >
               <LazyLoadImage
-                class="img-fluid rounded shadow"
+                className="img-fluid rounded shadow"
                 alt="Card Bottom"
                 src={rocket.flickr_images[0]}
                 width="500"
@@ -38,9 +38,9 @@ const Rockets = () => {
               />
             </Col>
             <Col md="6" className="mb-4">
-              <RocketCard key={rocket.id} rocket={rocket} fullHeight />
+              <RocketCard rocket={rocket} fullHeight />
             </Col>
-          </>
+          </React.Fragment>
         ))}
     </Row>
   );
