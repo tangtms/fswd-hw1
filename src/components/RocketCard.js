@@ -1,7 +1,6 @@
-import React, { useMemo, useCallback } from "react";
+import React, { useCallback } from "react";
 import { Badge, Card, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const InfoRow = ({ title, value, unit }) => {
   return (
@@ -17,34 +16,12 @@ const InfoRow = ({ title, value, unit }) => {
 };
 
 const RocketCard = ({ rocket, hideButton = false, fullHeight = false }) => {
-  const randImg = useMemo(() => {
-    try {
-      if (rocket.flickr_images) {
-        return rocket.flickr_images[
-          Math.floor(Math.random() * rocket.flickr_images.length)
-        ];
-      }
-      return "";
-    } catch (e) {
-      return "";
-    }
-  }, [rocket.flickr_images]);
-
   const commaNumber = useCallback((inputNumber) => {
     return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }, []);
 
   return (
     <Card className={fullHeight ? "h-100" : ""}>
-      <LazyLoadImage
-        class="card-img-top"
-        alt="Card Top"
-        src={randImg}
-        width="500"
-        height="400"
-        placeholderSrc={`${process.env.PUBLIC_URL}/loading.png`}
-      />
-
       <Card.Body>
         <Row>
           <Col>
