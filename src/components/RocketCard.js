@@ -31,7 +31,13 @@ const RocketCard = ({ rocket, hideButton = false, fullHeight = false }) => {
 
   return (
     <Card className={fullHeight ? "h-100" : ""}>
-      <Card.Img alt="Card Top" variant="top" src={randImg} />
+      <Card.Img
+        alt="Card Top"
+        variant="top"
+        src={randImg}
+        width="500"
+        height="400"
+      />
       <Card.Body>
         <Row>
           <Col>
