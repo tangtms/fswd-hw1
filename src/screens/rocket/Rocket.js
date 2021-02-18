@@ -15,7 +15,7 @@ const Rocket = () => {
       );
       setRocket(await response.json());
     })();
-  }, []);
+  }, [rocketId]);
 
   return (
     <>

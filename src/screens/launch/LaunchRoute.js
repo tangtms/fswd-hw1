@@ -1,20 +1,22 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
-import Launch from "./Launch";
-import Launches from "./Launches";
+const Launch = lazy(() => import("./Launch"));
+const Launches = lazy(() => import("./Launches"));
 
 const LaunchRoute = () => {
   let { path } = useRouteMatch();
   return (
     <>
-      <Switch>
-        <Route exact path={path}>
-          <Launches />
-        </Route>
-        <Route path={`${path}/:launchId`}>
-          <Launch />
-        </Route>
-      </Switch>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route exact path={path}>
+            <Launches />
+          </Route>
+          <Route path={`${path}/:launchId`}>
+            <Launch />
+          </Route>
+        </Switch>
+      </Suspense>
     </>
   );
 };

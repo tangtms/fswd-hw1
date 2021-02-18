@@ -17,9 +17,12 @@ const InfoRow = ({ title, value, unit }) => {
 
 const RocketCard = ({ rocket, hideButton = false, fullHeight = false }) => {
   const randImg = useMemo(() => {
-    return rocket.flickr_images[
-      Math.floor(Math.random() * rocket.flickr_images.length)
-    ];
+    if (rocket.flickr_images) {
+      return rocket.flickr_images[
+        Math.floor(Math.random() * rocket.flickr_images.length)
+      ];
+    }
+    return "";
   }, [rocket.flickr_images]);
 
   const commaNumber = useCallback((inputNumber) => {

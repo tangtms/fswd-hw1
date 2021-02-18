@@ -1,23 +1,25 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Row } from "react-bootstrap";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
-import Rocket from "./Rocket";
-import Rockets from "./Rockets";
+const Rocket = lazy(() => import("./Rocket"));
+const Rockets = lazy(() => import("./Rockets"));
 
 const RocketsRoute = () => {
   let { path } = useRouteMatch();
 
   return (
-    <Row>
-      <Switch>
-        <Route exact path={path}>
-          <Rockets />
-        </Route>
-        <Route path={`${path}/:rocketId`}>
-          <Rocket />
-        </Route>
-      </Switch>
-    </Row>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Row>
+        <Switch>
+          <Route exact path={path}>
+            <Rockets />
+          </Route>
+          <Route path={`${path}/:rocketId`}>
+            <Rocket />
+          </Route>
+        </Switch>
+      </Row>
+    </Suspense>
   );
 };
 

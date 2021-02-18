@@ -3,7 +3,7 @@ import RocketCard from "../../components/RocketCard";
 import { Row, Col } from "react-bootstrap";
 
 const Rockets = () => {
-  const [rockets, setRockets] = useState([]);
+  const [rockets, setRockets] = useState();
 
   useEffect(() => {
     (async () => {
@@ -14,11 +14,12 @@ const Rockets = () => {
 
   return (
     <Row>
-      {rockets.map((rocket) => (
-        <Col md="6" className="mb-4">
-          <RocketCard key={rocket.id} rocket={rocket} fullHeight />
-        </Col>
-      ))}
+      {rockets &&
+        rockets.map((rocket) => (
+          <Col md="6" className="mb-4">
+            <RocketCard key={rocket.id} rocket={rocket} fullHeight />
+          </Col>
+        ))}
     </Row>
   );
 };
