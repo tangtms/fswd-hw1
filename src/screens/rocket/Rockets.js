@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Row } from "react-bootstrap";
-import RocketCard from "../components/RocketCard";
+import RocketCard from "../../components/RocketCard";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 import Rocket from "./Rocket";
 

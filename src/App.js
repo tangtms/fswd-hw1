@@ -1,20 +1,15 @@
 import React from "react";
-import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from "react-router-dom";
+import { Container, Navbar, Nav } from "react-bootstrap";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import Home from "./screens/Home";
 import Launches from "./screens/Launches";
-import Rockets from "./screens/Rockets";
+import Rockets from "./screens/rocket/Rockets";
 
 const App = () => {
   return (
     <Router>
-      <Navbar bg="dark" variant="dark" expand="lg" >
+      <Navbar bg="dark" variant="dark" expand="lg">
         <LinkContainer to="/">
           <Navbar.Brand>SpaceX</Navbar.Brand>
         </LinkContainer>
