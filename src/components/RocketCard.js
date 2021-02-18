@@ -15,7 +15,7 @@ const InfoRow = ({ title, value, unit }) => {
   );
 };
 
-const RocketCard = ({ rocket }) => {
+const RocketCard = ({ rocket, hideButton = false, fullHeight = false }) => {
   const randImg = useMemo(() => {
     return rocket.flickr_images[
       Math.floor(Math.random() * rocket.flickr_images.length)
@@ -27,66 +27,67 @@ const RocketCard = ({ rocket }) => {
   }, []);
 
   return (
-    <Col md="6" className="mb-4">
-      <Card className="h-100">
-        <Card.Img variant="top" src={randImg} />
-        <Card.Body>
-          <Row>
-            <Col>
-              <Card.Title>{rocket.rocket_name}</Card.Title>
-            </Col>
-            <Col className="text-right">
-              <Card.Subtitle className="text-muted">
-                <Badge pill variant={rocket.active ? "success" : "danger"}>
-                  {rocket.active ? "Active" : "Inactive"}
-                </Badge>
-              </Card.Subtitle>
-            </Col>
-          </Row>
+    <Card className={fullHeight ? "h-100" : ""}>
+      <Card.Img variant="top" src={randImg} />
+      <Card.Body>
+        <Row>
+          <Col>
+            <Card.Title>{rocket.rocket_name}</Card.Title>
+          </Col>
+          <Col className="text-right">
+            <Card.Subtitle className="text-muted">
+              <Badge pill variant={rocket.active ? "success" : "danger"}>
+                {rocket.active ? "Active" : "Inactive"}
+              </Badge>
+            </Card.Subtitle>
+          </Col>
+        </Row>
 
-          <Card.Text>{rocket.description}</Card.Text>
-          <hr />
+        <Card.Text>{rocket.description}</Card.Text>
+        <hr />
 
-          <Row>
-            <Col md="12" className="font-weight-bold">
-              General
-            </Col>
+        <Row>
+          <Col md="12" className="font-weight-bold">
+            General
+          </Col>
 
-            <InfoRow title="First Flight" value={rocket.first_flight} />
+          <InfoRow title="First Flight" value={rocket.first_flight} />
+          <InfoRow
+            title="Success Rate"
+            value={rocket.success_rate_pct}
+            unit="%"
+          />
+          <InfoRow
+            title="Cost per launch"
+            value={commaNumber(rocket.cost_per_launch)}
+            unit="USD"
+          />
+          <InfoRow title="Height" value={rocket.height.meters} unit="m" />
+          <InfoRow title="Diameter" value={rocket.diameter.meters} unit="m" />
+
+          <Col md="12" className="mt-2 font-weight-bold">
+            Payload Weights
+          </Col>
+          {rocket.payload_weights.map((payload) => (
             <InfoRow
-              title="Success Rate"
-              value={rocket.success_rate_pct}
-              unit="%"
+              key={payload.id}
+              title={`- ${payload.name}`}
+              value={payload.kg}
+              unit="kg"
             />
-            <InfoRow
-              title="Cost per launch"
-              value={commaNumber(rocket.cost_per_launch)}
-              unit="USD"
-            />
-            <InfoRow title="Height" value={rocket.height.meters} unit="m" />
-            <InfoRow title="Diameter" value={rocket.diameter.meters} unit="m" />
+          ))}
 
-            <Col md="12" className="mt-2 font-weight-bold">
-              Payload Weights
-            </Col>
-            {rocket.payload_weights.map((payload) => (
-              <InfoRow
-                key={payload.id}
-                title={`- ${payload.name}`}
-                value={payload.kg}
-                unit="kg"
-              />
-            ))}
+          {!hideButton && (
             <Col md="12">
               <hr />
-              <Link to={`/rockets/${rocket.id}`}>
+              <Link to={`/rockets/${rocket.rocket_id}`}>
                 <Button variant="primary">More Details {">"}</Button>
               </Link>
             </Col>
-          </Row>
-        </Card.Body>
-      </Card>
-    </Col>
+          )}
+        </Row>
+      </Card.Body>
+    </Card>
   );
 };
 

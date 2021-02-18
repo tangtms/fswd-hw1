@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RocketCard from "../../components/RocketCard";
-import { Row } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 const Rockets = () => {
   const [rockets, setRockets] = useState([]);
@@ -15,7 +15,9 @@ const Rockets = () => {
   return (
     <Row>
       {rockets.map((rocket) => (
-        <RocketCard key={rocket.id} rocket={rocket} />
+        <Col md="6" className="mb-4">
+          <RocketCard key={rocket.id} rocket={rocket} fullHeight />
+        </Col>
       ))}
     </Row>
   );
