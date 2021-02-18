@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import RocketCard from "../../components/RocketCard";
 import { Row, Col } from "react-bootstrap";
 
@@ -28,13 +27,15 @@ const Rockets = () => {
                 alignItems: "center",
               }}
             >
-              <LazyLoadImage
+              <img
                 className="img-fluid rounded shadow"
                 alt="Card Bottom"
                 src={rocket.flickr_images[0]}
                 width="500"
                 height="400"
-                placeholderSrc={`${process.env.PUBLIC_URL}/loading-min.webp`}
+                style={{
+                  backgroundImage: `url('${process.env.PUBLIC_URL}/loading-min.webp')`,
+                }}
               />
             </Col>
             <Col md="6" className="mb-4">
