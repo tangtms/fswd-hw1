@@ -35,6 +35,7 @@ const Rockets = () => {
                 height="400"
                 style={{
                   backgroundImage: `url('${process.env.PUBLIC_URL}/loading-min.webp')`,
+                  backgroundColor: "#C4C4C4",
                 }}
               />
             </Col>
