@@ -9,7 +9,7 @@ const RocketRoute = lazy(() => import("./screens/rocket/RocketRoute"));
 const App = () => {
   return (
     <Router>
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar bg="black" variant="dark" expand="lg">
         <LinkContainer to="/">
           <Navbar.Brand>SpaceX</Navbar.Brand>
         </LinkContainer>

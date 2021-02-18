@@ -1,20 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import RocketCard from "../../components/RocketCard";
 import { Row, Col } from "react-bootstrap";
 
 const Rockets = () => {
-  const randImg = useCallback((images) => {
-    try {
-      if (images) {
-        return images[Math.floor(Math.random() * images.length)];
-      }
-      return "";
-    } catch (e) {
-      return "";
-    }
-  }, []);
-
   const [rockets, setRockets] = useState();
 
   useEffect(() => {
@@ -26,6 +15,9 @@ const Rockets = () => {
 
   return (
     <Row>
+      <Col md="12">
+        <h2>Rockets</h2>
+      </Col>
       {rockets &&
         rockets.map((rocket) => (
           <>
