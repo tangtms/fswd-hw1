@@ -36,6 +36,9 @@ const Launches = () => {
           <Card.Img variant="top" src={state.links.mission_patch} />
           <Card.Body>
             <Card.Title>{state.mission_name}</Card.Title>
+            <Badge pill variant={state.launch_success ? "success" : "danger"}>
+              {state.launch_success ? "Success" : "Fail"}
+            </Badge>
             <Card.Text>
               {state.launch_year}
               {launchDate.toString()}
@@ -57,6 +60,9 @@ const Launches = () => {
         }}
         value={year}
       >
+        <option value="" selected disabled hidden>
+          Select Year
+        </option>
         <option value="2007">2007</option>
         <option value="2008">2008</option>
         <option value="2009">2009</option>
@@ -68,6 +74,10 @@ const Launches = () => {
         }}
         value={rocketName}
       >
+        <option value="" selected disabled hidden>
+          Select Rocket Name
+        </option>
+
         <option value="falcon1">Falcon 1</option>
         <option value="falcon9">Falcon 9</option>
         <option value="falconheavy">Falcon Heavy</option>
@@ -79,6 +89,10 @@ const Launches = () => {
         }}
         value={launchSuccess}
       >
+        <option value="" selected disabled hidden>
+          Select Launch Success
+        </option>
+
         <option value="true">True</option>
         <option value="false">False</option>
       </select>
