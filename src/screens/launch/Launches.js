@@ -2,6 +2,19 @@ import React, { useState, useEffect } from "react";
 import { Badge, Card, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+const InfoRow = ({ title, value, unit }) => {
+  return (
+    <>
+      <Col md="6" className="text-muted">
+        {title}
+      </Col>
+      <Col md="6" className="text-right font-weight-bold">
+        {value} {unit}
+      </Col>
+    </>
+  );
+};
+
 const Launches = () => {
   const [state, setState] = useState([]);
   const [year, setYear] = useState("");
@@ -29,19 +42,41 @@ const Launches = () => {
   // };
   console.log(year);
   const launchItems = state.map((state) => {
-    const launchDate = new Date(state.launch_date_unix * 1000);
+    // const launchDate = new Date(state.launch_date_unix * 1000);
     return (
-      <Col>
-        <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src={state.links.mission_patch} />
+      <Col className="col-sm-12 col-md-6 col-lg-4 my-3">
+        <Card>
+          <Card.Img
+            variant="top"
+            src={state.links.mission_patch}
+            className="p-4"
+          />
           <Card.Body>
             <Card.Title>{state.mission_name}</Card.Title>
-            <Badge pill variant={state.launch_success ? "success" : "danger"}>
-              {state.launch_success ? "Success" : "Fail"}
-            </Badge>
+            <hr />
             <Card.Text>
-              {state.launch_year}
-              {launchDate.toString()}
+              <Row>
+                <Col md="12" className="font-weight-bold">
+                  General
+                </Col>
+                <InfoRow title="Launch Year" value={state.launch_year} />
+                <InfoRow
+                  title="Launch Site"
+                  value={state.launch_site.site_name}
+                />
+                <InfoRow
+                  title="Launch Success"
+                  value={
+                    <Badge
+                      pill
+                      variant={state.launch_success ? "success" : "danger"}
+                    >
+                      {state.launch_success ? "Succeed" : "Failed"}
+                    </Badge>
+                  }
+                />
+                {/* <InfoRow title="Detail" value={state.details} /> */}
+              </Row>
             </Card.Text>
             <Link to={`/launches/${state.flight_number}`}>
               <Button variant="primary">More Details {">"}</Button>
@@ -54,7 +89,9 @@ const Launches = () => {
   return (
     <>
       <h1>Launches</h1>
+      <p>Filter by</p>
       <select
+        className="mr-2"
         onChange={(e) => {
           setYear(e.target.value);
         }}
@@ -69,13 +106,14 @@ const Launches = () => {
         <option value="2010">2010</option>
       </select>
       <select
+        className="mr-2"
         onChange={(e) => {
           setRocketName(e.target.value);
         }}
         value={rocketName}
       >
         <option value="" selected disabled hidden>
-          Select Rocket Name
+          Select Rocket
         </option>
 
         <option value="falcon1">Falcon 1</option>
@@ -84,6 +122,7 @@ const Launches = () => {
         <option value="starship">Starship</option>
       </select>
       <select
+        className="mr-2"
         onChange={(e) => {
           setLaunchSuccess(e.target.value);
         }}
