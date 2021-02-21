@@ -2,6 +2,39 @@ import React, { useState, useEffect } from "react";
 import { Badge, Card, Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import InfoRow from "../../components/InfoRow";
+import ReactPlaceholder from "react-placeholder";
+
+const LaunchPlaceholderCard = () => {
+  return (
+    <Col className="col-sm-12 col-md-6 col-lg-4 my-3">
+      <Card>
+        <Card.Body>
+          <ReactPlaceholder
+            ready={false}
+            type="rect"
+            style={{
+              width: "100%",
+              height: 300,
+            }}
+            className="mb-5"
+          />
+          <ReactPlaceholder ready={false} type="textRow" />
+          <hr />
+          <ReactPlaceholder ready={false} type="text" rows={4} />
+          <ReactPlaceholder
+            className="mt-4"
+            ready={false}
+            type="rect"
+            style={{
+              height: "2.25em",
+              width: "8em",
+            }}
+          />
+        </Card.Body>
+      </Card>
+    </Col>
+  );
+};
 
 const LaunchCard = ({ launch }) => {
   return (
@@ -138,6 +171,17 @@ const Launches = () => {
       <hr className="mb-0" />
 
       <Row>
+        {state.length <= 0 && (
+          <>
+            <LaunchPlaceholderCard />
+            <LaunchPlaceholderCard />
+            <LaunchPlaceholderCard />
+            <LaunchPlaceholderCard />
+            <LaunchPlaceholderCard />
+            <LaunchPlaceholderCard />
+          </>
+        )}
+
         {state.map((state) => {
           return <LaunchCard launch={state} />;
         })}
