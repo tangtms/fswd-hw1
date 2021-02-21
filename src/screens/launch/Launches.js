@@ -46,10 +46,12 @@ const Launches = () => {
     return (
       <Col className="col-sm-12 col-md-6 col-lg-4 my-3">
         <Card>
-          <Card.Img
-            variant="top"
+          <img
+            className="card-img-top p-4"
+            alt="Card Top"
             src={state.links.mission_patch}
-            className="p-4"
+            width="350"
+            height="350"
           />
           <Card.Body>
             <Card.Title>{state.mission_name}</Card.Title>
@@ -86,6 +88,7 @@ const Launches = () => {
       </Col>
     );
   });
+
   return (
     <>
       <h2>Launches</h2>
