@@ -3,6 +3,53 @@ import { Badge, Card, Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import InfoRow from "../../components/InfoRow";
 
+const LaunchCard = ({ launch }) => {
+  return (
+    <Col className="col-sm-12 col-md-6 col-lg-4 my-3">
+      <Card>
+        <img
+          className="card-img-top p-4"
+          alt="Card Top"
+          src={launch.links.mission_patch}
+          width="350"
+          height="350"
+        />
+        <Card.Body>
+          <Card.Title>{launch.mission_name}</Card.Title>
+          <hr />
+          <Card.Text>
+            <Row>
+              <Col md="12" className="font-weight-bold">
+                General
+              </Col>
+              <InfoRow title="Launch Year" value={launch.launch_year} />
+              <InfoRow
+                title="Launch Site"
+                value={launch.launch_site.site_name}
+              />
+              <InfoRow
+                title="Launch Success"
+                value={
+                  <Badge
+                    pill
+                    variant={launch.launch_success ? "success" : "danger"}
+                  >
+                    {launch.launch_success ? "Succeed" : "Failed"}
+                  </Badge>
+                }
+              />
+              {/* <InfoRow title="Detail" value={launch.details} /> */}
+            </Row>
+          </Card.Text>
+          <Link to={`/launches/${launch.flight_number}`}>
+            <Button variant="primary">More Details {">"}</Button>
+          </Link>
+        </Card.Body>
+      </Card>
+    </Col>
+  );
+};
+
 const Launches = () => {
   const [state, setState] = useState([]);
   const [year, setYear] = useState("");
@@ -20,62 +67,9 @@ const Launches = () => {
           launchSuccess
       );
       const data = await response.json();
-      console.log(data);
       setState(data);
     })();
   }, [year, rocketName, launchSuccess]);
-
-  // const filterYear = (e) => {
-  //   setYear(e.target.value);
-  // };
-  console.log(year);
-  const launchItems = state.map((state) => {
-    // const launchDate = new Date(state.launch_date_unix * 1000);
-    return (
-      <Col className="col-sm-12 col-md-6 col-lg-4 my-3">
-        <Card>
-          <img
-            className="card-img-top p-4"
-            alt="Card Top"
-            src={state.links.mission_patch}
-            width="350"
-            height="350"
-          />
-          <Card.Body>
-            <Card.Title>{state.mission_name}</Card.Title>
-            <hr />
-            <Card.Text>
-              <Row>
-                <Col md="12" className="font-weight-bold">
-                  General
-                </Col>
-                <InfoRow title="Launch Year" value={state.launch_year} />
-                <InfoRow
-                  title="Launch Site"
-                  value={state.launch_site.site_name}
-                />
-                <InfoRow
-                  title="Launch Success"
-                  value={
-                    <Badge
-                      pill
-                      variant={state.launch_success ? "success" : "danger"}
-                    >
-                      {state.launch_success ? "Succeed" : "Failed"}
-                    </Badge>
-                  }
-                />
-                {/* <InfoRow title="Detail" value={state.details} /> */}
-              </Row>
-            </Card.Text>
-            <Link to={`/launches/${state.flight_number}`}>
-              <Button variant="primary">More Details {">"}</Button>
-            </Link>
-          </Card.Body>
-        </Card>
-      </Col>
-    );
-  });
 
   return (
     <>
@@ -143,7 +137,11 @@ const Launches = () => {
 
       <hr className="mb-0" />
 
-      <Row>{launchItems}</Row>
+      <Row>
+        {state.map((state) => {
+          return <LaunchCard launch={state} />;
+        })}
+      </Row>
     </>
   );
 };
