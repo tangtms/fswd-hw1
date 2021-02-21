@@ -1,19 +1,7 @@
 import React, { useCallback } from "react";
 import { Badge, Card, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
-const InfoRow = ({ title, value, unit }) => {
-  return (
-    <>
-      <Col md="8" className="text-muted">
-        {title}
-      </Col>
-      <Col md="4" className="text-right font-weight-bold">
-        {value} {unit}
-      </Col>
-    </>
-  );
-};
+import InfoRow from "./InfoRow";
 
 const RocketCard = ({ rocket, hideButton = false, fullHeight = false }) => {
   const commaNumber = useCallback((inputNumber) => {

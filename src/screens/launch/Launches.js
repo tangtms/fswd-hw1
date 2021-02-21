@@ -1,19 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Badge, Card, Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
-const InfoRow = ({ title, value, unit }) => {
-  return (
-    <>
-      <Col md="6" className="text-muted">
-        {title}
-      </Col>
-      <Col md="6" className="text-right font-weight-bold">
-        {value} {unit}
-      </Col>
-    </>
-  );
-};
+import InfoRow from "../../components/InfoRow";
 
 const Launches = () => {
   const [state, setState] = useState([]);
