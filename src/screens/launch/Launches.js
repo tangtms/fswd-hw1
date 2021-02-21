@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Badge, Card, Row, Col, Button } from "react-bootstrap";
+import { Badge, Card, Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const InfoRow = ({ title, value, unit }) => {
@@ -88,53 +88,70 @@ const Launches = () => {
   });
   return (
     <>
-      <h1>Launches</h1>
-      <p>Filter by</p>
-      <select
-        className="mr-2"
-        onChange={(e) => {
-          setYear(e.target.value);
-        }}
-        value={year}
-      >
-        <option value="" selected disabled hidden>
-          Select Year
-        </option>
-        <option value="2007">2007</option>
-        <option value="2008">2008</option>
-        <option value="2009">2009</option>
-        <option value="2010">2010</option>
-      </select>
-      <select
-        className="mr-2"
-        onChange={(e) => {
-          setRocketName(e.target.value);
-        }}
-        value={rocketName}
-      >
-        <option value="" selected disabled hidden>
-          Select Rocket
-        </option>
+      <h2>Launches</h2>
 
-        <option value="falcon1">Falcon 1</option>
-        <option value="falcon9">Falcon 9</option>
-        <option value="falconheavy">Falcon Heavy</option>
-        <option value="starship">Starship</option>
-      </select>
-      <select
-        className="mr-2"
-        onChange={(e) => {
-          setLaunchSuccess(e.target.value);
-        }}
-        value={launchSuccess}
-      >
-        <option value="" selected disabled hidden>
-          Select Launch Success
-        </option>
+      <p className="m-0">Filter by</p>
 
-        <option value="true">True</option>
-        <option value="false">False</option>
-      </select>
+      <Row>
+        <Col>
+          <Form.Control
+            as="select"
+            onChange={(e) => {
+              setYear(e.target.value);
+            }}
+            value={year}
+          >
+            <option value="" selected disabled hidden>
+              Select Year
+            </option>
+
+            {[...Array(14).keys()]
+              .map((i) => i + 2007)
+              .map((year) => (
+                <option value={year}>{year}</option>
+              ))}
+          </Form.Control>
+        </Col>
+
+        <Col>
+          <Form.Control
+            as="select"
+            onChange={(e) => {
+              setRocketName(e.target.value);
+            }}
+            value={rocketName}
+          >
+            <option value="" selected disabled hidden>
+              Select Rocket
+            </option>
+
+            <option value="falcon1">Falcon 1</option>
+            <option value="falcon9">Falcon 9</option>
+            <option value="falconheavy">Falcon Heavy</option>
+            <option value="starship">Starship</option>
+          </Form.Control>
+        </Col>
+
+        <Col>
+          <Form.Control
+            as="select"
+            onChange={(e) => {
+              setLaunchSuccess(e.target.value);
+            }}
+            value={launchSuccess}
+          >
+            <option value="" selected disabled hidden>
+              Select Launch Success
+            </option>
+
+            <option value="true">Success</option>
+            <option value="false">Failed</option>
+          </Form.Control>
+        </Col>
+      </Row>
+
+      <hr className="mb-0" />
+
       <Row>{launchItems}</Row>
     </>
   );
