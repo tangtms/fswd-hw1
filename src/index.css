@@ -15,3 +15,9 @@ code {
 .bg-black {
   background-color: black !important;
 }
+
+.v-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

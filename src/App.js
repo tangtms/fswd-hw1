@@ -35,19 +35,17 @@ const App = () => {
             <Home />
           </Route>
           <Route path="/rockets">
-            <Container className="mt-4">
+            <Container className="mt-4 mb-5">
               <RocketRoute />
             </Container>
           </Route>
           <Route path="/launches">
-            <Container className="mt-4">
+            <Container className="mt-4 mb-5">
               <LaunchRoute />
             </Container>
           </Route>
         </Switch>
       </Suspense>
-
-      <div className="mb-5"></div>
     </Router>
   );
 };
