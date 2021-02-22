@@ -76,7 +76,11 @@ const Launch = () => {
               </Card>
             </Col>
             <Col md="6">
-              <img src={launch.links.mission_patch} className="h-50 mt-5" />
+              <img
+                src={launch.links.mission_patch}
+                className="h-50 mt-5"
+                alt="Mission Patch"
+              />
             </Col>
           </Row>
         </>
