@@ -4,7 +4,7 @@ const PageHero = ({ title, subtitle }) => {
   return (
     <div
       className="d-flex justify-content-center align-items-center"
-      style={{ background: "#EEE", height: "100vh" }}
+      style={{ background: "#111", height: "100vh" }}
     >
       <div>
         <h1 className="display-4">{title}</h1>

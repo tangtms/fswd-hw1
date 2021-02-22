@@ -5,7 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import "./override.scss";
-// import "@forevolve/bootstrap-dark/dist/css/bootstrap-dark.min.css";
 
 ReactDOM.render(
   <React.StrictMode>

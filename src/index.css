@@ -21,3 +21,11 @@ code {
   top: 50%;
   transform: translateY(-50%);
 }
+
+.badge {
+  color: black !important;
+}
+
+.btn {
+  color: white !important;
+}

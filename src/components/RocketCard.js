@@ -16,7 +16,7 @@ const RocketCard = ({ rocket, hideButton = false, fullHeight = false }) => {
             <Card.Title>{rocket.rocket_name}</Card.Title>
           </Col>
           <Col className="text-right">
-            <Card.Subtitle className="text-muted">
+            <Card.Subtitle>
               <Badge pill variant={rocket.active ? "success" : "danger"}>
                 {rocket.active ? "Active" : "Inactive"}
               </Badge>

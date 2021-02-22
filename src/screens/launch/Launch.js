@@ -2,19 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Row, Col, Button, Card, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
-const InfoRow = ({ title, value, unit }) => {
-  return (
-    <>
-      <Col md="6" className="text-muted">
-        {title}
-      </Col>
-      <Col md="6" className="text-right font-weight-bold">
-        {value} {unit}
-      </Col>
-    </>
-  );
-};
+import InfoRow from "../../components/InfoRow";
 
 const Launch = () => {
   let { launchId } = useParams();
