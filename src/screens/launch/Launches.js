@@ -107,68 +107,79 @@ const Launches = () => {
   return (
     <>
       <h2>Launches</h2>
-
-      <p className="m-0">Filter by</p>
+      <h5 className="m-0 mb-1">Filter by</h5>
 
       <Row>
         <Col>
-          <Form.Control
-            as="select"
-            onChange={(e) => {
-              setYear(e.target.value);
-            }}
-            value={year}
-          >
-            <option value="" selected disabled hidden>
-              Select Year
-            </option>
+          <Form.Group>
+            <Form.Label htmlFor="launch_year">Launch Year</Form.Label>
+            <Form.Control
+              id="launch_year"
+              as="select"
+              onChange={(e) => {
+                setYear(e.target.value);
+              }}
+              value={year}
+            >
+              <option value="" selected disabled hidden>
+                Select Year
+              </option>
 
-            {[...Array(14).keys()]
-              .map((i) => i + 2007)
-              .map((year) => (
-                <option value={year}>{year}</option>
-              ))}
-          </Form.Control>
+              {[...Array(14).keys()]
+                .map((i) => i + 2007)
+                .map((year) => (
+                  <option value={year}>{year}</option>
+                ))}
+            </Form.Control>
+          </Form.Group>
         </Col>
 
         <Col>
-          <Form.Control
-            as="select"
-            onChange={(e) => {
-              setRocketName(e.target.value);
-            }}
-            value={rocketName}
-          >
-            <option value="" selected disabled hidden>
-              Select Rocket
-            </option>
+          <Form.Group>
+            <Form.Label htmlFor="launch_vehicle">Launch Vehicle</Form.Label>
+            <Form.Control
+              id="launch_vehicle"
+              as="select"
+              onChange={(e) => {
+                setRocketName(e.target.value);
+              }}
+              value={rocketName}
+            >
+              <option value="" selected disabled hidden>
+                Select Rocket
+              </option>
 
-            <option value="falcon1">Falcon 1</option>
-            <option value="falcon9">Falcon 9</option>
-            <option value="falconheavy">Falcon Heavy</option>
-            <option value="starship">Starship</option>
-          </Form.Control>
+              <option value="falcon1">Falcon 1</option>
+              <option value="falcon9">Falcon 9</option>
+              <option value="falconheavy">Falcon Heavy</option>
+              <option value="starship">Starship</option>
+            </Form.Control>
+          </Form.Group>
         </Col>
 
         <Col>
-          <Form.Control
-            as="select"
-            onChange={(e) => {
-              setLaunchSuccess(e.target.value);
-            }}
-            value={launchSuccess}
-          >
-            <option value="" selected disabled hidden>
-              Select Launch Success
-            </option>
+          <Form.Group>
+            <Form.Label htmlFor="launch_outcome">Launch Outcome</Form.Label>
+            <Form.Control
+              id="launch_outcome"
+              as="select"
+              onChange={(e) => {
+                setLaunchSuccess(e.target.value);
+              }}
+              value={launchSuccess}
+            >
+              <option value="" selected disabled hidden>
+                Select Launch Success
+              </option>
 
-            <option value="true">Success</option>
-            <option value="false">Failed</option>
-          </Form.Control>
+              <option value="true">Success</option>
+              <option value="false">Failed</option>
+            </Form.Control>
+          </Form.Group>
         </Col>
       </Row>
 
-      <hr className="mb-0" />
+      <hr className="my-0" />
 
       <Row>
         {state.length <= 0 && (
