@@ -3,6 +3,7 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import Home from "./screens/Home";
+import PageHero from "./components/PageHero";
 const LaunchRoute = lazy(() => import("./screens/launch/LaunchRoute"));
 const RocketRoute = lazy(() => import("./screens/rocket/RocketRoute"));
 
@@ -35,14 +36,10 @@ const App = () => {
             <Home />
           </Route>
           <Route path="/rockets">
-            <Container className="mt-4 mb-5">
-              <RocketRoute />
-            </Container>
+            <RocketRoute />
           </Route>
           <Route path="/launches">
-            <Container className="mt-4 mb-5">
-              <LaunchRoute />
-            </Container>
+            <LaunchRoute />
           </Route>
         </Switch>
       </Suspense>
