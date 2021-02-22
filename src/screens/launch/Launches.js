@@ -44,8 +44,6 @@ const LaunchCard = ({ launch }) => {
           className="card-img-top p-4"
           alt="Card Top"
           src={launch.links.mission_patch}
-          width="350"
-          height="350"
         />
         <Card.Body>
           <Card.Title>{launch.mission_name}</Card.Title>
@@ -107,7 +105,7 @@ const Launches = () => {
   return (
     <>
       <h2>Launches</h2>
-      <h5 className="m-0 mb-1">Filter by</h5>
+      <p className="m-0 mb-1 h5">Filter by</p>
 
       <Row>
         <Col>
