@@ -28,7 +28,7 @@ const Rocket = () => {
             <RocketCard rocket={rocket} hideButton />
           </Col>
           <Col md="4">
-            <h4>Gallery</h4>
+            <p className="h4">Gallery</p>
             <hr />
             {rocket.flickr_images.map((image) => (
               <img
