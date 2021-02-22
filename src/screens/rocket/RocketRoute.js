@@ -27,6 +27,16 @@ const RocketsRoute = () => {
           </Container>
         </Route>
         <Route path={`${path}/:rocketId`}>
+          <PageHero
+            title="Rocket Detail"
+            subtitle={
+              <>
+                The launch vehicle itself
+                <br />
+                Been delivering payload since 2008
+              </>
+            }
+          />
           <Container className="mt-4 mb-5">
             <Rocket />
           </Container>

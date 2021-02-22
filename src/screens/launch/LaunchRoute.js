@@ -28,6 +28,16 @@ const LaunchRoute = () => {
             </Container>
           </Route>
           <Route path={`${path}/:launchId`}>
+            <PageHero
+              title="Launch Detail"
+              subtitle={
+                <>
+                  One launch
+                  <br />
+                  One more step toward Mars
+                </>
+              }
+            />
             <Container className="mt-4 mb-5">
               <Launch />
             </Container>

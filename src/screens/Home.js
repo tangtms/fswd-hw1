@@ -30,14 +30,13 @@ const Home = () => {
           marginRight: "20em",
         }}
       >
-        <h1>SpaceX</h1>
-        <hr className="bg-white" />
-        <h4>
+        <h1 className="display-3 font-weight-bold">SpaceX</h1>
+        <p className="lead">
           Aerospace manufacturer and space transportation services company
           headquartered in Hawthorne, California. Founded in 2002 by Elon Musk
           with the goal of reducing space transportation costs to enable the
           colonization of Mars.
-        </h4>
+        </p>
       </div>
     </>
   );
