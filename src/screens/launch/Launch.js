@@ -19,7 +19,7 @@ const Launch = () => {
   console.log(launch);
 
   return (
-    <>
+    <div style={{ minHeight: "100vh" }}>
       {launch && (
         <>
           <Row>
@@ -66,14 +66,14 @@ const Launch = () => {
             <Col md="6">
               <img
                 src={launch.links.mission_patch}
-                className="h-50 mt-5"
+                className="mt-5 img-fluid"
                 alt="Mission Patch"
               />
             </Col>
           </Row>
         </>
       )}
-    </>
+    </div>
   );
 };
 

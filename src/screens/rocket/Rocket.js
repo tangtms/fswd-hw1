@@ -18,10 +18,10 @@ const Rocket = () => {
   }, [rocketId]);
 
   return (
-    <>
+    <div style={{ minHeight: "100vh" }}>
       {rocket && (
         <Row>
-          <Col md="8">
+          <Col md="8" className="mb-4">
             <Link to="/rockets/">
               <Button className="mb-4">{"< "} Back</Button>
             </Link>
@@ -41,7 +41,7 @@ const Rocket = () => {
           </Col>
         </Row>
       )}
-    </>
+    </div>
   );
 };
 

@@ -108,7 +108,7 @@ const Launches = () => {
       <p className="m-0 mb-1 h5">Filter by</p>
 
       <Row>
-        <Col>
+        <Col col="12" md="4">
           <Form.Group>
             <Form.Label htmlFor="launch_year">Launch Year</Form.Label>
             <Form.Control
@@ -132,7 +132,7 @@ const Launches = () => {
           </Form.Group>
         </Col>
 
-        <Col>
+        <Col col="12" md="4">
           <Form.Group>
             <Form.Label htmlFor="launch_vehicle">Launch Vehicle</Form.Label>
             <Form.Control
@@ -155,7 +155,7 @@ const Launches = () => {
           </Form.Group>
         </Col>
 
-        <Col>
+        <Col col="12" md="4">
           <Form.Group>
             <Form.Label htmlFor="launch_outcome">Launch Outcome</Form.Label>
             <Form.Control
